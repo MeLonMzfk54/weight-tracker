@@ -12,6 +12,24 @@
       <input type="number" step="0.1" v-model="weightInput">
       <input type="submit" value="Сохранить вес">
     </form>
+
+    <div v-if="weights && weights.length">
+      <h2>Последние 7 дней</h2>
+
+      <div class="weight__canvas">
+        <canvas ref="weightChartEl"></canvas>
+      </div>
+
+      <div class="weight__history">
+        <h2>История изменения веса</h2>
+        <ul>
+          <li v-for="weight in weights" :key="weight.date">
+            <span>{{ weight.weight }}кг</span>
+            <small>{{ new Date(weight.date).toLocaleDateString() }}</small>
+          </li>
+        </ul>
+      </div>
+    </div>
   </main>
 </template>
 
