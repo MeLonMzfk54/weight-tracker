@@ -1,7 +1,18 @@
 <template>
-  <div>
-    Главная
-  </div>
+  <main class="weight">
+
+    <h1>Трекер веса</h1>
+
+    <div class="weight__current">
+      <span>{{ currentWeight.weight }}</span>
+      <small>Текущий вес (кг)</small>
+    </div>
+
+    <form @submit.prevent="addWeight">
+      <input type="number" step="0.1" v-model="weightInput">
+      <input type="submit" value="Сохранить вес">
+    </form>
+  </main>
 </template>
 
 <script>
@@ -28,8 +39,14 @@ export default {
       })
     }
 
-
-
+    return {
+      weights,
+      weightChartEl,
+      weightInput,
+      weightChart,
+      currentWeight,
+      addWeight,
+    }
   }
 }
 </script>
